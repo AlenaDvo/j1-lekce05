@@ -26,4 +26,10 @@ public class Telefon {
         }
         this.telefonniCislo = telefonniCislo;
     }
+
+    @Override
+    public String toString() {
+        return "Telefon: " + predcisli + telefonniCislo;
+    }
 }
+

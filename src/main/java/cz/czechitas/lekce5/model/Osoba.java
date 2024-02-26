@@ -9,6 +9,48 @@ public class Osoba {
 
     private Telefon telefon;
 
+    private String soukromyEmail;
+
+    private String pracovniEmail;
+
+    private Adresa adresa;
+
+    public Adresa getAdresa() {
+        return adresa;
+    }
+
+    public void setAdresa(Adresa adresa) {
+        this.adresa = adresa;
+    }
+
+    public String getSoukromyEmail() {
+        return soukromyEmail;
+    }
+
+    public void setSoukromyEmail(String soukromyEmail) {
+        if (soukromyEmail.isEmpty()) {
+            System.err.println("Soukromy e-mail nebyl zadan.");
+        } else if (!soukromyEmail.contains("@")) {
+            System.err.println("Soukromy e-mail neobsahuje @.");
+        } else {
+            this.soukromyEmail = soukromyEmail;
+        }
+    }
+
+    public String getPracovniEmail() {
+        return pracovniEmail;
+    }
+
+    public void setPracovniEmail(String pracovniEmail) {
+        if (pracovniEmail.isEmpty()) {
+            System.err.println("Pracovni e-mail nebyl zadan.");
+        } else if (!pracovniEmail.contains("@")) {
+            System.err.println("Pracovni e-mail neobsahuje @.");
+        } else {
+            this.pracovniEmail = pracovniEmail;
+        }
+    }
+
     public String getJmeno() {
         return jmeno;
     }
@@ -42,11 +84,11 @@ public class Osoba {
     public void setRodneCislo(String rodneCislo) {
         Objects.requireNonNull(rodneCislo);
         if (rodneCislo.isBlank()) {
-            System.err.println("Rodné číslo nemůže být prázdné.");
+            System.err.println("Rodne cislo nemuze byt prazdne.");
             return;
         }
         if (!rodneCislo.contains("/")) {
-            System.err.println("Rodné číslo musí obsahovat lomítko.");
+            System.err.println("Rodne cislo musi obsahovat lomitko.");
             return;
         }
         this.rodneCislo = rodneCislo;
@@ -62,6 +104,9 @@ public class Osoba {
 
     public String toString() {
         return jmeno + " " + prijmeni + " (" + rodneCislo + ")";
+    }
+    public String getKontakty() {
+        return "pracovni e-mail: " + pracovniEmail + ", soukromy e-mail: " + soukromyEmail + ", telefon: " + getTelefon();
     }
 }
 
